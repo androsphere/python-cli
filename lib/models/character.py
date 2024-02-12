@@ -4,15 +4,15 @@ from models.__init__ import CURSOR, CONN
 class Character:
     all = {}
 
-    def __init__(self, name, species, type, id = None ):
+    def __init__(self, name, species, character_class , id = None ):
         self.id = id
         self.name = name
         self.species = species
-        self.type = type
+        self.character_class = character_class
         
         
     def __repr__(self):
-        return f"<Character {self.id}: {self.name},{self.species}, {self.type}>"
+        return f"<Character {self.id}: {self.name},{self.species}, {self.character_class}>"
     
     @property
     def name(self):
@@ -37,15 +37,15 @@ class Character:
             raise ValueError("Species must be a non-empty string")
     
     @property
-    def type(self):
-        return self._type
+    def character_class(self):
+        return self._character_class
 
-    @type.setter
-    def type(self, type):
+    @character_class.setter
+    def type(self, character_class):
         if isinstance(type, str) and len(type):
-            self._type = type
+            self._character_class = character_class
         else:
-            raise ValueError("Type must be a non-empty string")
+            raise ValueError("Class must be a non-empty string")
         
     @classmethod
     def create_table(cls):
@@ -55,7 +55,7 @@ class Character:
             id INTEGER PRIMARY KEY,
             name TEXT,
             species TEXT,
-            type TEXT)
+            character_class TEXT)
         """
         CURSOR.execute(sql)
         CONN.commit()
