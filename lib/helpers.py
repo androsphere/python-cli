@@ -1,8 +1,11 @@
 # lib/helpers.py
+from models.character import Character
+from models.item import Item
 
 def list_characters():
-    print("Performing useful function#1.")
-    
+    characters = Character.get_all()
+    for character in characters:
+        print(character)
 
 def list_items():
     print("list items")

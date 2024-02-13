@@ -13,7 +13,7 @@ class Item:
 
     def __repr__(self):
         return (
-            f"<Item {self.id}: {self.name}, {self.item_type}, {self.weight}, " +
+            f"<Item {self.id}: {self.name}, {self.weight}, " +
             f"Owner: {self.character_id}>"
         )
     

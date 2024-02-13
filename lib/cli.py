@@ -2,7 +2,8 @@
 
 from helpers import (
     exit_program,
-    helper_1
+    list_characters,
+    list_items
 )
 
 
@@ -10,18 +11,23 @@ def main():
     while True:
         menu()
         choice = input("> ")
-        if choice == "0":
+        if choice == "E" or choice == "e":
             exit_program()
         elif choice == "1":
-            helper_1()
+            list_characters()
+
+        elif choice == "2":
+            list_items()
         else:
             print("Invalid choice")
 
 
 def menu():
+    print("Welcome to Andy's inventory management program!")
     print("Please select an option:")
-    print("0. Exit the program")
-    print("1. Some useful function")
+    print("E. Exit the program")
+    print("1. List Current Characters")
+
 
 
 if __name__ == "__main__":
