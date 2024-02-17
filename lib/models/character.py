@@ -150,3 +150,15 @@ class Character:
         
         total_weight = sum(row[0] for row in rows)
         return total_weight
+    
+    @classmethod
+    def find_by_name(cls, name):
+        """Return Character object corresponding to first table row matching specified name"""
+        sql = """
+            SELECT *
+            FROM characters
+            WHERE name is ?
+        """
+
+        row = CURSOR.execute(sql, (name,)).fetchone()
+        return cls.instance_from_db(row) if row else None
