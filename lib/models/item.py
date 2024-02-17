@@ -99,3 +99,19 @@ class Item:
         item = cls(name, weight, character_id)
         item.save()
         return item
+    
+    def delete(self):
+
+        sql = """
+            DELETE FROM items
+            WHERE id = ?
+        """
+
+        CURSOR.execute(sql, (self.id,))
+        CONN.commit()
+
+        # Delete the dictionary entry using id as the key
+        del type(self).all[self.id]
+
+        # Set the id to None
+        self.id = None
