@@ -15,8 +15,11 @@ def list_items():
 
 def add_character():
     name = input("Enter the character's name: ")
+    e_test(name)
     species = input("Enter the character's species: ")
+    e_test(species)
     character_class = input("Enter ther character's class: ")
+    e_test(character_class)
     try:
         character = Character.create(name, species, character_class)
         print(f'Success: {character}')
@@ -25,15 +28,22 @@ def add_character():
 
 def add_item():
     name = input("Enter the item's name: ")
+    e_test(name)
     character = input("Which character does this item belong to? ")
-    weight = input("Enter the item's weight")
+    e_test(character)
+    weight = input("Enter the item's weight in pounds: ")
+    e_test(weight)
 
     character_id = Character.find_by_name(character).id
     try:
-        item = Item.create(name, character_id , weight)
+        item = Item.create(name, weight, character_id )
         print(f'Success: {item}')
     except Exception as exc:
         print("Error creating item: ", exc)
+
+def e_test(string_input):
+    if string_input.upper() == "E":
+        exit_program()
 
 
 def exit_program():
