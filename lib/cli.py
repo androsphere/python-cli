@@ -27,6 +27,7 @@ def main():
 
 
 def menu():
+    print("")
     print("Welcome to Andy's inventory management program!")
     print("Type E at any time to exit the program")
     print("1: List Characters")

@@ -30,7 +30,7 @@ def list_characters():
         edit_character(current_character)
     elif edit_or_delete == "2":
         current_character.delete()
-        print("Character deleted")
+        print("Character deleted /n")
     elif edit_or_delete == "3":
         list_character_items(current_character)
     elif edit_or_delete == "4":
@@ -76,10 +76,10 @@ def list_character_items(character):
         edit_item(current_item)
     elif edit_or_delete == "2":
         current_item.delete()
-        print("Item deleted ")
+        print("Item deleted /n")
 
     else:
-        print("Invalid input")
+        print("Invalid input /n")
 
 def edit_item(item):
     try:
