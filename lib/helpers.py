@@ -31,13 +31,28 @@ def list_characters():
     elif edit_or_delete == "2":
         delete_character(current_character)
     elif edit_or_delete == "3":
-        edit_character_items(character)
+        edit_character_items(current_character)
     else:
         print("invalid choice")
 
 
 def edit_character(character):
-    pass
+    
+    try:
+        name = input("Enter Character's new name: ")
+        e_test(name)
+        character.name = name
+        species = input("Enter the Character's new species: ")
+        e_test(species)
+        character.species = species
+        character_class = input("Enter the character's new class: ")
+        e_test(character_class)
+        character.character_class = character_class
+
+        character.update()
+        print(f'Success: {character}')
+    except Exception as exc:
+            print("Error updating character: ", exc)
 
 def delete_character(character):
     pass

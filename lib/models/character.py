@@ -163,6 +163,16 @@ class Character:
         row = CURSOR.execute(sql, (name,)).fetchone()
         return cls.instance_from_db(row) if row else None
     
+    def update(self):
+        
+        sql = """
+            UPDATE characters
+            SET name = ?, species = ?, character_class = ?
+            WHERE id = ?
+        """
+        CURSOR.execute(sql, (self.name, self.species, self.character_class, self.id))
+        CONN.commit()
+    
     def delete(self):
 
 
