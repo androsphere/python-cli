@@ -29,9 +29,10 @@ def list_characters():
     if edit_or_delete == "1":
         edit_character(current_character)
     elif edit_or_delete == "2":
-        delete_character(current_character)
+        current_character.delete()
+        print("Character deleted")
     elif edit_or_delete == "3":
-        edit_character_items(current_character)
+        list_character_items(current_character)
     else:
         print("invalid choice")
 
@@ -54,12 +55,21 @@ def edit_character(character):
     except Exception as exc:
             print("Error updating character: ", exc)
 
-def delete_character(character):
-    pass
 
-def edit_character_items(character):
-    pass
-    
+def list_character_items(character):
+    items = character.items()
+    for item in items:
+        print(item)
+        print("Type 'R' to return to main menu")
+    choice = input("Which Item would you like to inpect? > ")
+    if choice.upper() == "R":
+        return
+    e_test(choice)
+    current_item = items[int(choice)-1]
+    print(f"{current_item.name} Selected")
+    print("1. Edit item")
+    print("2. Delete item")
+    edit_or_delete = input("> ")
     
     
 
