@@ -12,7 +12,7 @@ class Character:
         
         
     def __repr__(self):
-        return f"<Character {self.id}: {self.name},{self.species}, {self.character_class}>"
+        return f"<{self.name}, {self.species}, {self.character_class}>"
     
     @property
     def name(self):

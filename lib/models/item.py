@@ -13,7 +13,7 @@ class Item:
 
     def __repr__(self):
         return (
-            f"<Item {self.id}: {self.name}, {self.weight}, " +
+            f"<{self.id}: {self.name}, {self.weight}, " +
             f"Owner: {self.character_id}>"
         )
     
@@ -95,10 +95,18 @@ class Item:
 
     @classmethod
     def create(cls, name, weight, character_id):
-        """ Initialize a new Employee instance and save the object to the database """
         item = cls(name, weight, character_id)
         item.save()
         return item
+    
+    def update(self):
+        sql = """
+            UPDATE items
+            SET name = ?, weight = ?, character_id = ?
+            WHERE id = ?
+        """
+        CURSOR.execute(sql, (self.name, self.weight, self.character_id, self.id))
+        CONN.commit()
     
     def delete(self):
 
