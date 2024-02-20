@@ -76,10 +76,10 @@ def list_character_items(character):
         edit_item(current_item)
     elif edit_or_delete == "2":
         current_item.delete()
-        print("Item deleted /n")
-
+        print("Item deleted ")
+        print("")
     else:
-        print("Invalid input /n")
+        print("Invalid input ")
 
 def edit_item(item):
     try:
@@ -108,7 +108,7 @@ def add_character():
     e_test(character_class)
     try:
         character = Character.create(name, species, character_class)
-        print(f'Success: {character}')
+        print(f'Success: {character.name} has joined the game!')
     except Exception as exc:
         print("Error creating employee: ", exc)
 
@@ -127,8 +127,8 @@ def add_item():
         return
     character_id = Character.find_by_name(character_input).id
     try:
-        item = Item.create(name, weight, character_id )
-        print(f'Success: {item}')
+        item = Item.create(name, int(weight), character_id )
+        print(f'Success:{character_input} now has {item.name}')
     except Exception as exc:
         print("Error creating item: ", exc)
 
