@@ -1,10 +1,10 @@
 # lib/cli.py
 
 from helpers import (
-    exit_program,
     list_characters,
     add_character,
-    add_item
+    add_item,
+    e_test
 )
 
 
@@ -12,9 +12,8 @@ def main():
     while True:
         menu()
         choice = input("> ")
-        if choice == "E" or choice == "e":
-            exit_program()
-        elif choice == "1":
+        e_test(choice)
+        if choice == "1":
             list_characters()
 
         elif choice == "2":

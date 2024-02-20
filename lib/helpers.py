@@ -115,24 +115,29 @@ def add_character():
 def add_item():
     name = input("Enter the item's name: >")
     e_test(name)
-    character = input("Which character will carry it? >")
-    e_test(character)
+    character_input= input("Which character will carry it? >")
+    e_test(character_input)
     weight = input("Enter the item's weight in pounds: >")
     e_test(weight)
-
-    character_id = Character.find_by_name(character).id
+    characters = [character.name for character in Character.get_all()]
+    if character_input in characters:
+        pass
+    else:
+        print("Item can only be added to existing character")
+        return
+    character_id = Character.find_by_name(character_input).id
     try:
         item = Item.create(name, weight, character_id )
         print(f'Success: {item}')
     except Exception as exc:
         print("Error creating item: ", exc)
 
+
 def e_test(string_input):
     if string_input.upper() == "E":
-        exit_program()
+        print("Exiting Program")
+        print("Goodbye!")
+        exit()
 
 
-def exit_program():
-    print("Exiting Program")
-    print("Goodbye!")
-    exit()
+
