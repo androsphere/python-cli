@@ -12,6 +12,7 @@ def seed_database():
     Andros = Character.create("Andy", "Human", "Paladin")
     Harper = Character.create("Harper", "Elf", "Druid")
     James = Character.create("James", "Elf", "Warlock")
+    Kate  = Character.create("Kate", "Half-elf", "Rogue")
     Item.create("Longsword", 3 , Andros.id)
     Item.create("Shield", 6, Andros.id)
     Item.create("Chainmail", 55, Andros.id)
@@ -19,6 +20,7 @@ def seed_database():
     Item.create("Bag of Holding", 15, Harper.id)
     Item.create("pipe", 1, Harper.id)
     Item.create("Spellbook", 1, James.id)
+    Item.create("Rapier", 2, Kate.id)
 
 
 seed_database()

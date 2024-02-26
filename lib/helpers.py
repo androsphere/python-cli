@@ -4,8 +4,12 @@ from models.character import Character
 from models.item import Item
 
 def list_characters():
-    print("Characters: ")
     characters = Character.get_all()
+    if len(characters) == 0:
+        print("No characters in database")
+        return
+    print("")
+    print("Characters: ")
     for index, character in  enumerate(characters, start=1):
         print(f"{index}. {character.name}: {character.species} {character.character_class}")
     print("Which character would you like to inspect?")
@@ -13,7 +17,11 @@ def list_characters():
     e_test(choice)
     if choice.upper() == "R":
         return
+    if choice.isnumeric() == False or int(choice) >= len(characters) + 1:
+        print("Invalid choice")
+        return
     current_character = characters[int(choice)-1]
+    print("")
     print (f"{current_character.name} selected.")
     items = current_character.items()
     for item in items:
@@ -30,7 +38,7 @@ def list_characters():
         edit_character(current_character)
     elif edit_or_delete == "2":
         current_character.delete()
-        print("Character deleted /n")
+        print("Character deleted")
     elif edit_or_delete == "3":
         list_character_items(current_character)
     elif edit_or_delete == "4":
@@ -65,6 +73,8 @@ def list_character_items(character):
     choice = input("Which Item would you like to inpect? > ")
     if choice.upper() == "R":
         return
+    if choice >= len(items):
+        print("Invalid choice")
     e_test(choice)
     current_item = items[int(choice)-1]
     print(f"{current_item.name} Selected")
