@@ -38,7 +38,7 @@ def list_characters():
         edit_character(current_character)
     elif edit_or_delete == "2":
         current_character.delete()
-        print("Character deleted")
+        print(f"{current_character.name} deleted")
     elif edit_or_delete == "3":
         list_character_items(current_character)
     elif edit_or_delete == "4":
@@ -130,9 +130,7 @@ def add_item():
     weight = input("Enter the item's weight in pounds: >")
     e_test(weight)
     characters = [character.name for character in Character.get_all()]
-    if character_input in characters:
-        pass
-    else:
+    if character_input not in characters:
         print("Item can only be added to existing character")
         return
     character_id = Character.find_by_name(character_input).id
